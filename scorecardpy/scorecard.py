@@ -214,11 +214,11 @@ def scorecard_ply(dt, card, only_total_score=True, print_step=0, replace_blank_n
         card_df = pd.concat(card, ignore_index=True)
     elif isinstance(card, pd.DataFrame):
         card_df = card.copy(deep=True)
-    # x variables
+    # x variables 找到需要分桶的特征
     xs = card_df.loc[card_df.variable != 'basepoints', 'variable'].unique()
     # length of x variables
     xs_len = len(xs)
-    # initial datasets
+    # initial datasets 剔除需要分桶的特征
     dat = dt.loc[:,list(set(dt.columns)-set(xs))]
     
     # loop on x variables
